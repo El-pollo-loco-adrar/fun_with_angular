@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center m-8">
+    <div class="card bg-base-100 w-96 shadow-sm flex items-center justify-center">
+        <h1 class="font-bold text-3xl m-4">{{ titre}}</h1>
+        <p class="m-4">{{ description}}</p>
+        <p class="m-4">Date actuelle : {{ curentDate }}</p>
+
+        <h2 class="m-4">{{ username}}</h2>
+        
+        <!-- <ul>
+            <li *ngFor="let item of items">{{ item}}</li>
+        </ul> -->
+        <ul class="border rounded-8 p-4">
+            <p class="underline">les items du tab de merde :</p>
+            <li>Lecture : {{ hobbies.reading}}</li>
+            <li>Vélo : {{ hobbies.cycling}}</li>
+            <li>Cuisine : {{ hobbies.cooking }}</li>
+        </ul>
+        <p>Appel de la fonction : <strong>{{ getWelcomeMessage()}}</strong></p>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<form class="flex flex-col items-center border m-8 p-8" action="" (submit)="addFriend(); $event.preventDefault()">
+    <h2 class="font-semibold text-2xl">List friends (Event Binding)</h2>
+    <input type="text" placeholder="Nom ami" class="input input-neutral m-4" (keyup)="onKeyUp($event)"/>
+
+    <p class="mb-4"><strong class="underline">Ton ami :</strong> {{ currentInput }}</p>
+
+    <button class="btn btn-success">Ajouter un ami</button>
+    <p class="mt-4 font-semibold">{{ listFriendsCreation }}</p>
+</form>
+
+
+<div class="flex items-center justify-center m-8 rounded-xl">
+    <div class="card bg-base-100 w-96 shadow-sm flex items-center justify-center ">
+        <img class="rounded-t-xl" [src]="img" alt="">
+        <h2 class="font-semibold">{{ username }}</h2>
+        <span [style.color]="status ? 'green' : 'red'">
+            {{ status? 'Online' : 'Offline'}}
+        </span>
+        <p>{{ age }}</p>
+        <p>{{ bio }}</p>
+        <p>Réputation : {{ img? 'Beau gosse' : 'Ringard de fou' }}</p>
+    </div>
+</div>
