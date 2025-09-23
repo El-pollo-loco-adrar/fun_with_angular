@@ -1,23 +1,79 @@
-<form class="flex flex-col items-center border m-8 p-8" action="" (submit)="addFriend(); $event.preventDefault()">
-    <h2 class="font-semibold text-2xl">List friends (Event Binding)</h2>
-    <input type="text" placeholder="Nom ami" class="input input-neutral m-4" (keyup)="onKeyUp($event)"/>
+<div id="list-friends" class="max-w-3xl mx-auto p-6 space-y-6">
+    <!-- 🟦 TITRE -->
+    <h1 class="text-3xl font-bold text-center text-primary">
+        List Friends <span class="text-base-content/70">(Event Binding)</span>
+    </h1>
 
-    <p class="mb-4"><strong class="underline">Ton ami :</strong> {{ currentInput }}</p>
+    <!-- 🟩 INPUT -->
+    <div class="form-control w-full max-w-md mx-auto">
+        <label class="label">
+        <span class="label-text text-base-content">Nom de l'ami</span>
+        </label>
+        <input 
+            type="text" 
+            placeholder="Entrer le nom d'un ami"
+            class="input input-bordered w-full" 
+            aria-label="Nom de l'ami" 
+            [(ngModel)]="listFriendsInputText"
+            />
+    </div>
 
-    <button class="btn btn-success">Ajouter un ami</button>
-    <p class="mt-4 font-semibold">{{ listFriendsCreation }}</p>
-</form>
+    <!-- 🟨 INFOS TEXTE -->
+    <div class="text-center space-y-2">
+        <p class="text-base text-secondary font-medium">
+        {{ listFriendsInputText }}
+        </p>
+        <!-- <p class="text-sm text-accent">
+        {{ listFriendsCreationStatus }}
+        </p> -->
+        <p class="text-sm text-accent" *ngIf="!listFriendsCreationStatus">Aucun ami</p>
+        <p class="text-sm text-accent" *ngIf="listFriendsCreationStatus">1 ami</p>
+    </div>
+
+    <!-- 🟧 BOUTON AJOUTER -->
+    <div class="text-center">
+        <button class="btn btn-primary btn-wide" (click)="onAddingFriends()" [disabled]="listFriendsAuth">
+        ➕ Ajouter un ami
+        </button>
+    </div>
+
+    <!-- 🟪 LISTE D’AMIS -->
+    <div class="mt-6">
+        <!-- <app-one-friend-event-binding></app-one-friend-event-binding> -->
+    </div>
+</div>
 
 
 <div class="flex items-center justify-center m-8 rounded-xl">
     <div class="card bg-base-100 w-96 shadow-sm flex items-center justify-center ">
         <img class="rounded-t-xl" [src]="img" alt="">
         <h2 class="font-semibold">{{ username }}</h2>
-        <span [style.color]="status ? 'green' : 'red'">
+        <span [ngClass]="getStatusClass()">
             {{ status? 'Online' : 'Offline'}}
         </span>
-        <p>{{ age }}</p>
-        <p>{{ bio }}</p>
-        <p>Réputation : {{ img? 'Beau gosse' : 'Ringard de fou' }}</p>
+        <p [ngClass]="getAgeClass()">{{ age }} ans</p>
+        <p>Ma bio : {{ bio }}</p>
+        <p ><span class="underline">Réputation :</span> {{ age < 30? 'Jeune' : 'Vieu de fou' }}</p>
     </div>
+</div>
+
+<!-- Formulaire pour modifier la card -->
+<div class="flex items-center justify-center m-8 rounded-xl">
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <legend class="fieldset-legend">Modifier la star</legend>
+
+        <label class="label">Nom</label>
+        <input type="text" class="input" placeholder="Change mon nom" [(ngModel)]="tempUsername" />
+
+        <label class="label">Age</label>
+        <input type="number" class="input" placeholder="Change mon âge" [(ngModel)]="tempAge" />
+
+        <label class="label">Description</label>
+        <input type="text" class="input" placeholder="Change ma description" [(ngModel)]="tempBio" />
+
+        <label class="label">URL de l'image</label>
+        <input type="text" class="input" placeholder="Change ma photo" [(ngModel)]="tempImg" />
+
+        <button type="button" class="btn btn-neutral mt-4" (click)="onValidate()">Valider</button>
+    </fieldset>
 </div>

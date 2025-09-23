@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadComponent: () => import('./lessons/property-binding/property-binding').then(m => m.PropertyBinding)
     },
     {
+        path: 'friends',
+        loadComponent: () => import('./friends/friends').then(m => m.Friends)
+    },
+    {
         path: '**',
         loadComponent: () => import('./no-found/no-found').then(m => m.NoFound)
     },
