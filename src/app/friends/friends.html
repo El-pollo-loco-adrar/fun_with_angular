@@ -24,11 +24,17 @@
     <button class="btn btn-primary" (click)="addFriend()">➕ Ajouter un pote</button>
 </div>
 
-<div class="space-y-4">
+<div class="relative w-full h-[600px] border border-dashed border-gray-400 m-4">
     <app-one-friend
         *ngFor="let friend of lesAmis"
         [ami]="friend"
-    >
-    </app-one-friend>
+        [ngStyle]="{ 
+            top: friend.top + 'px', 
+            left: friend.left + 'px', 
+            position: 'absolute',
+            transform: 'rotate(' + friend.rotation + 'deg)'
+        }"
+>
+</app-one-friend>
 </div>
 

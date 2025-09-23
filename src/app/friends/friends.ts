@@ -15,7 +15,10 @@ export class Friends {
     name: string;
     age: number;
     bio: string;
-    reputation: string
+    reputation: string;
+    top?: number;
+    left?: number;
+    rotation?: number
   } [] = [];
 
   newName: string = "";
@@ -24,13 +27,19 @@ export class Friends {
   newReputation: string = "";
 
   addFriend(){
-    if (this.newName && this.newAge && this.newBio && this.newReputation)
+    if (this.newName && this.newAge && this.newBio && this.newReputation){
+      const randomTop = Math.floor(Math.random() * 500);  // entre 0 et 500px
+      const randomLeft = Math.floor(Math.random() * 800);
+      const randomRotation = Math.floor(Math.random() *40) -20;
       this.lesAmis.push ({
         name: this.newName,
         age: this.newAge,
         bio: this.newBio,
-        reputation: this.newReputation
+        reputation: this.newReputation,
+        top: randomTop,
+        left: randomLeft,
+        rotation: randomRotation
       })
     }
+    }
   }
-
