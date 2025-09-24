@@ -1,0 +1,20 @@
+<div class="flex flex-col text-center">
+    <h1>TP Directives</h1>
+    <button class="btn btn-soft btn-primary mt-4" (click)="clique()">Clique ici !!</button>
+</div>
+<div class="flex flex-col gap-4 m-4">
+
+    
+    <!-- <p *ngIf="statutParagraphe===true">{{loremJeff}}</p> -->
+    <p *ngIf="etatPara === true">{{ para }}</p>
+
+    <ul>
+        <li 
+            *ngFor="let item of array; let i = index"
+            [ngClass]=" { 'bg-pink-500 text-wh': i >= 5 }"
+        >
+            {{i}}
+        </li>
+    </ul>
+    
+</div>

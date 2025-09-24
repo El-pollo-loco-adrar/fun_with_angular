@@ -22,6 +22,10 @@ export const routes: Routes = [
         loadComponent: () => import('./friends/friends').then(m => m.Friends)
     },
     {
+        path: 'jeffTp',
+        loadComponent: () => import('./jeff-tp1/jeff-tp1').then(m => m.JeffTp1)
+    },
+    {
         path: '**',
         loadComponent: () => import('./no-found/no-found').then(m => m.NoFound)
     },
