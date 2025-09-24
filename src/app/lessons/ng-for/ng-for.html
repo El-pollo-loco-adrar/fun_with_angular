@@ -1,0 +1,30 @@
+<div class="max-w-3xl mx-auto p-6 space-y-6">
+  <!-- 🟩 Formulaire d'ajout d'ami -->
+  <div class="flex flex-col sm:flex-row items-center gap-4">
+    <input
+      [(ngModel)]="inputNameFriend"
+      type="text"
+      placeholder="Nom du pote"
+      class="input input-bordered w-full sm:flex-1"
+    />
+    <button
+      class="btn btn-primary w-full sm:w-auto"
+      (click)="addAFriend()"
+    >
+      ➕ Ajouter un Pote
+    </button>
+  </div>
+
+<!-- 🟧 Liste des amis -->
+<div class="grid">
+  <app-property-binding
+    *ngFor="let item of userProfiles"
+  ></app-property-binding>
+</div>
+
+
+
+  <!-- @for (item of userProfiles; track item.id) {
+    <app-property-binding></app-property-binding>
+  } -->
+</div>
