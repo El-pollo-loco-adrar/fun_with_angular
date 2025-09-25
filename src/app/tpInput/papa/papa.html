@@ -1,0 +1,13 @@
+<p>papa works!</p>
+<div class="grid gap-2 flex justify-center my-4">
+    <input class="input" type="text"
+        [(ngModel)]="saisie"    
+    >
+    <button class="btn btn-primary"
+        (click)="saveSaisie()"
+    >Envoie d'enfant</button>
+</div>
+<div>
+    <app-timothee [sendUser]="user"></app-timothee>
+</div>
+

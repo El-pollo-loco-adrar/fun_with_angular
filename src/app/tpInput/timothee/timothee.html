@@ -1,0 +1,12 @@
+<p>timothee works!</p>
+<div class="card border-100 bg-red-500 shadow-xl my-4"
+    *ngFor="let item of users"
+>
+    <div class="card-body">
+        <h2 class="card-title">{{ item.firstName }}</h2>
+        <p>{{ item.lastName }}</p>
+        <p>{{ item.email }}</p>
+        <p>{{ item.isActive }}</p>
+        <p>{{ item.role }}</p>
+    </div>
+</div>

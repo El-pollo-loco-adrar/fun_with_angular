@@ -23,7 +23,8 @@ export class ListRendering {
 
   inputNameFriend:string=''
 
-   userProfiles  = [
+  
+  userProfiles  = [
     {
       id: 1,
       firstName: 'Jean',

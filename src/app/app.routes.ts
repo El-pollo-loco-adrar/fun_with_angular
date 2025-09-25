@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
+import { AuthGuardService } from './services/auth-guard';
 
 export const routes: Routes = [
     // { path: '', redirectTo: 'home', pathMatch: 'full' }, // redirige / vers /home
@@ -37,6 +38,29 @@ export const routes: Routes = [
         path: 'parent',
         loadComponent: () => import('./lessons/parent/parent').then(m => m.Parent)
     },
+    {
+        path: 'task',
+        loadComponent: () => import('./task-list-firebase/task-list-firebase').then(m => m.TaskListFirebase)
+    },
+    {
+        path: 'register',
+        loadComponent: () => import('./auth/register/register').then(m => m.Register)
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login').then(m => m.Login)
+    },
+    {
+        path:'dashboard',
+        canActivate: [AuthGuardService],
+        loadComponent:()=>import('./auth/dashboard/dashboard').then(m=>m.Dashboard)
+    },
+    {
+        path: 'papa',
+        loadComponent: () => import('./tpInput/papa/papa').then(m => m.Papa)
+    },
+    
+    
     {
         path: '**',
         loadComponent: () => import('./no-found/no-found').then(m => m.NoFound)

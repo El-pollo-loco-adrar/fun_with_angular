@@ -1,0 +1,74 @@
+<div class="card w-full max-w-md mx-auto mt-10 p-6 shadow-lg bg-base-100">
+    <form (ngSubmit)="addTask()" class="flex gap-3 items-center">
+        <label for="task-list">Ajoute une tâche frère</label>
+        <input 
+            id="task-title"
+            type="text" 
+            [(ngModel)]="newTask.title" 
+            name="title"
+            class="input input-bordered w-full"
+        >
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+<div class="card w-full max-w-md mx-auto mt-10 p-6 shadow-lg bg-base-100">
+    <h2 class="text-lg font-semibold mt-6">Liste des tâches</h2>
+    <ul class="mt-3 space-y-2">
+        <!-- <li *ngFor="let task of tasks">{{ task.title}} status : {{ task.status}}</li> -->
+        <li *ngFor="let task of tasks" class="p-3 border rounded-lg bg-base-200 flex items-center gap-3">
+            <span>{{ task.title }} - </span>
+            <span>{{ task.status}}</span>
+        </li>
+        
+    </ul>
+</div>
+
+
+<div class="card w-full max-w-lg mx-auto mt-10 p-6 shadow-lg bg-base-100">
+    <h2 class="text-xl font-bold mb-4">Ajouter un profil</h2>
+    <form (ngSubmit)="addProfil()" class="flex flex-col gap-3">
+        <input
+        type="text"
+        [(ngModel)]="newProfil.nom"
+        name="nom"
+        placeholder="Nom"
+        class="input input-bordered w-full"
+        required
+        >
+        <input
+        type="text"
+        [(ngModel)]="newProfil.prenom"
+        name="prenom"
+        placeholder="Prénom"
+        class="input input-bordered w-full"
+        >
+        <input
+        type="number"
+        [(ngModel)]="newProfil.age"
+        name="age"
+        placeholder="Âge"
+        class="input input-bordered w-full"
+        min="0"
+        >
+        <input
+        type="text"
+        [(ngModel)]="newProfil.img"
+        name="img"
+        placeholder="URL de l'image"
+        class="input input-bordered w-full"
+        >
+
+        <button type="submit" class="btn btn-primary mt-2">Ajouter</button>
+    </form>
+
+    <h3 class="text-lg font-semibold mt-6">Profils existants</h3>
+    <ul class="mt-3 space-y-2">
+        <li *ngFor="let p of profil" class="p-3 border rounded-lg bg-base-200 flex items-center gap-3">
+        <img *ngIf="p.img" [src]="p.img" alt="{{p.nom}}" class="w-12 h-12 rounded-full object-cover">
+        <div>
+            <div class="font-bold">{{ p.nom }} {{ p.prenom }}</div>
+            <div>Âge : {{ p.age }}</div>
+        </div>
+        </li>
+    </ul>
+</div>
